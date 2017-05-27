@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">SiAC</string>
+    <string name="action_settings">Ingresar Usuario Nuevo</string>
+    <string name="hint_name">Nombres</string>
+    <string name="hint_apellidos">Apellidos</string>
+    <string name="hint_usuario">Nombre Usuario</string>
+    <string name="hint_fecha_ingreso">Fecha Ingreso</string>
+    <string name="hint_estatus">Estatus</string>
+    <string name="hint_tipo">Tipo Usuario</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_sign_up">Grabar</string>
+    <string name="err_msg_name">Ingrese su nombre</string>
+    <string name="err_msg_apellido">Ingrese sus apellidos</string>
+    <string name="err_msg_usuario">Ingrese nombre usuario</string>
+    <string name="err_msg_fechaingreso">Fecha ingreso</string>
+    <string name="err_msg_estatus">Seleccione Estatus</string>
+    <string name="err_msg_tipo">Ingrese Tipo usuario</string>
+    <string name="err_msg_password">Ingrese password</string>
 </resources>

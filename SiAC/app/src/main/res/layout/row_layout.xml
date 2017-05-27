@@ -1,39 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="75dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:id="@+id/tx_nombre"
-        android:layout_alignParentLeft="true"
-        android:text="Prueba ListView"
-        android:gravity="center"
-        android:textSize="15dp"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tx_nombre"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:text="Prueba ListView"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textSize="15dp" />
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:id="@+id/tx_apellidos"
-        android:layout_toRightOf="@+id/tx_nombre"
-        android:text="Prueba ListView"
-        android:gravity="center"
-        android:textSize="15dp"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tx_apellidos"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tx_nombre"
+            android:gravity="center"
+            android:text="Prueba ListView"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textSize="15dp" />
+    </LinearLayout>
 
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:id="@+id/tx_usuario"
-        android:layout_toRightOf="@+id/tx_apellidos"
-        android:text="Prueba ListView"
-        android:gravity="center"
-        android:textSize="15dp"
-        android:textAppearance="?android:textAppearanceLarge"
-        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tx_usuario"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tx_apellidos"
+            android:gravity="center"
+            android:text="Prueba ListView"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textSize="15dp" />
 
-</RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

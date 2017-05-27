@@ -60,10 +60,10 @@ public class UsuariosAdapter extends ArrayAdapter {
         }
 
         else
-            {
-                usuariosHolder = (UsuariosHolder) row.getTag();
+        {
+            usuariosHolder = (UsuariosHolder) row.getTag();
 
-            }
+        }
 
         Usuarios usuarios = (Usuarios) this.getItem(position);
         usuariosHolder.txnombre.setText(usuarios.getNombre_json());
