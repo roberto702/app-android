@@ -29,7 +29,7 @@ public class UsuariosAdapter extends ArrayAdapter {
 
     @Override
     public int getCount(){
-        return list.size();
+        return super.getCount();
     }
 
     @Override
@@ -74,7 +74,6 @@ public class UsuariosAdapter extends ArrayAdapter {
     }
 
     static class UsuariosHolder{
-
         TextView txnombre, txapellidos,txusuarios;
     }
 }

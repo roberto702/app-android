@@ -56,7 +56,7 @@ public class DisplayListView extends AppCompatActivity {
             int count = 0;
             String nombre, apellidos, usuarios_listview;
 
-            while (count<jsonArray.length()){
+            while (count < jsonArray.length()){
                 JSONObject JO = jsonArray.getJSONObject(count);
                 nombre = JO.getString("NOMBRE");
                 apellidos = JO.getString("APELLIDOS");
@@ -64,8 +64,6 @@ public class DisplayListView extends AppCompatActivity {
                 Usuarios usuarios = new Usuarios(nombre, apellidos,usuarios_listview);
                 usuariosAdapter.add(usuarios);
                 count++;
-
-
             }
 
         } catch (JSONException e) {
@@ -104,6 +102,12 @@ public class DisplayListView extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         return MenuSuperior.instancia.onCreateOptionsMenu(menu, this);
 
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        //Intentar llamar OnOptionsItemSelected con MenuOption2
     }
 
     @Override

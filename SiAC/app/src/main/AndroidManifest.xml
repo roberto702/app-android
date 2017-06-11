@@ -21,6 +21,9 @@
         <activity android:name=".SuccessActivity" />
         <activity android:name=".DisplayListView" />
         <activity android:name=".InsertActivity" />
+        <activity android:name=".DisplayAsistenciaListView"/>
+        <activity android:name=".DisplayClasesListView"/>
+
     </application>
 
 </manifest>

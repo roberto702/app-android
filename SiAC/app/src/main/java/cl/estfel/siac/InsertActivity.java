@@ -422,6 +422,7 @@ public class InsertActivity extends AppCompatActivity {
                         insertar_estatus.setText("");
                         insertar_tipo.setText("");
                         insertar_password.setText("");
+                        InsertActivity.this.finish();
                     }
                 });
             else

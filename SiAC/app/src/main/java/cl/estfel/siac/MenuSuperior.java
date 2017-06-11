@@ -34,6 +34,7 @@ public class MenuSuperior {
 
             case R.id.MenuOpcion1:
                 Toast.makeText(current, "Asistencia", Toast.LENGTH_SHORT).show();
+                new AsistenciaTask().execute();
                 return true;
 
             case R.id.MenuOpcion2:
@@ -50,6 +51,12 @@ public class MenuSuperior {
         return false;
     }
 
+    public static void Menu1Success(){
+        Intent intent = new Intent(current, DisplayClasesListView.class);
+        current.startActivity(intent);
+        current.finish();
+    }
+
     public static void Menu2Success(){
         Intent intent = new Intent(current,DisplayListView.class);
         current.startActivity(intent);
@@ -63,10 +70,7 @@ public class MenuSuperior {
         protected  void onPreExecute(){
             json_url = "http://robertoadvance.dreamhosters.com/Connections/Android/obtener_usuarios.php";
 
-
         }
-
-
 
         @Override
         protected String doInBackground(Void... voids) {
@@ -96,9 +100,6 @@ public class MenuSuperior {
         protected void onProgressUpdate(Void... values){
 
             super.onProgressUpdate(values);
-
-
-
         }
 
         @Override
@@ -118,6 +119,51 @@ public class MenuSuperior {
         //}
     }
 
+    private class AsistenciaTask extends AsyncTask<Void, Void, String> {
+        String json_url;
 
+        @Override
+        protected  void onPreExecute(){
+            json_url = "http://robertoadvance.dreamhosters.com/Connections/Android/obtener_listadodeclases.php";
+
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try{
+                URL url = new URL(json_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder result = new StringBuilder();
+                String line;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    result.append(line);
+
+                }
+
+                //Pass data to onPostExecute method
+                return (result.toString());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                //Toast.makeText(current, "Error en la conexión", Toast.LENGTH_SHORT).show();
+            }
+            return "";
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values){
+
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected  void onPostExecute (String result) {
+            Data.JSONClases =  result;
+            Menu1Success();
+        }
+    }
 
 }
