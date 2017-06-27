@@ -1,19 +1,17 @@
 package cl.estfel.siac;
 
-/**
- * Created by robma on 10/06/2017.
- */
 
 public class Clases {
 
-    private String nombredelaClase_json, fechacreacionClase_json;
+    private String nombredelaClase_json;
 
-    public Clases(String nombredelaClase_json, String fechacreacionClase_json){
-        this.setNombredelaClase_json(nombredelaClase_json);
-        this.setFechacreacionClase(fechacreacionClase_json);
+    private String idClase_json;
 
+
+    public Clases(String nombredelaClase_json, String idClase_json) {
+        this.nombredelaClase_json = nombredelaClase_json;
+        this.idClase_json = idClase_json;
     }
-
 
     public String getNombredelaClase_json() {
         return nombredelaClase_json;
@@ -23,12 +21,11 @@ public class Clases {
         this.nombredelaClase_json = nombredelaClase_json;
     }
 
-    public String getFechacreacionClase_json() {
-        return fechacreacionClase_json;
+    public String getIdClase_json() {
+        return idClase_json;
     }
 
-    public void setFechacreacionClase(String fechacreacionClase_json) {
-        this.fechacreacionClase_json = fechacreacionClase_json;
+    public void setIdClase_json(String idClase_json) {
+        this.idClase_json = idClase_json;
     }
-
 }

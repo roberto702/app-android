@@ -1,39 +1,30 @@
 package cl.estfel.siac;
 
-/**
- * Created by robma on 13/05/2017.
- */
-
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-//import android.widget.ImageButton;
 import android.widget.Toast;
 import android.text.Editable;
-//import android.text.TextUtils;
 import android.text.TextWatcher;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 
 public class InsertActivity extends AppCompatActivity {
 
@@ -92,6 +83,7 @@ public class InsertActivity extends AppCompatActivity {
         insertar_apellidos.addTextChangedListener(new MyTextWatcher(insertar_apellidos));
         insertar_usuario.addTextChangedListener(new MyTextWatcher(insertar_usuario));
         insertar_fecha_registro.addTextChangedListener(new MyTextWatcher(insertar_fecha_registro));
+
         insertar_estatus.addTextChangedListener(new MyTextWatcher(insertar_estatus));
         insertar_tipo.addTextChangedListener(new MyTextWatcher(insertar_tipo));
         insertar_password.addTextChangedListener(new MyTextWatcher(insertar_password));
@@ -103,14 +95,14 @@ public class InsertActivity extends AppCompatActivity {
 
                 submitForm();
                 if (!insertar_nombre.getText().toString().trim().equalsIgnoreCase("") ||
-                       !insertar_apellidos.getText().toString().trim().equalsIgnoreCase("") ||
-                       !insertar_usuario.getText().toString().trim().equalsIgnoreCase("") ||
-                       !insertar_fecha_registro.getText().toString().trim().equalsIgnoreCase("") ||
-                       !insertar_estatus.getText().toString().trim().equalsIgnoreCase("") ||
-                       !insertar_tipo.getText().toString().trim().equalsIgnoreCase("") ||
-                       !insertar_password.getText().toString().trim().equalsIgnoreCase(""))
+                        !insertar_apellidos.getText().toString().trim().equalsIgnoreCase("") ||
+                        !insertar_usuario.getText().toString().trim().equalsIgnoreCase("") ||
+                        !insertar_fecha_registro.getText().toString().trim().equalsIgnoreCase("") ||
+                        !insertar_estatus.getText().toString().trim().equalsIgnoreCase("") ||
+                        !insertar_tipo.getText().toString().trim().equalsIgnoreCase("") ||
+                        !insertar_password.getText().toString().trim().equalsIgnoreCase(""))
 
-                       new Insertar(InsertActivity.this).execute();
+                    new Insertar(InsertActivity.this).execute();
 
                 else
                     Toast.makeText(InsertActivity.this, "Existe información por ingresar", Toast.LENGTH_LONG).show();
@@ -436,4 +428,6 @@ public class InsertActivity extends AppCompatActivity {
             return null;
         }
     }
+
+
 }

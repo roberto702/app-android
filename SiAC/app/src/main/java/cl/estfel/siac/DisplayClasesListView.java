@@ -1,8 +1,11 @@
 package cl.estfel.siac;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +17,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import static cl.estfel.siac.MenuSuperior.current;
 import static cl.estfel.siac.R.id.listView1;
 
 
@@ -43,13 +54,16 @@ public class DisplayClasesListView extends AppCompatActivity {
             jsonArray = jsonObject.getJSONArray("nombre_clase");
 
             int count = 0;
-            String nombreClaseClase, fechaCreacionClase;
+            String nombreClaseClase;
+            String idClase;
 
             while (count < jsonArray.length()){
                 JSONObject JO = jsonArray.getJSONObject(count);
                 nombreClaseClase = JO.getString("nombre_clase");
-                fechaCreacionClase = JO.getString("fecha_clase");
-                Clases clases = new Clases(nombreClaseClase, fechaCreacionClase);
+
+                idClase = JO.getString("id_clase");
+                //fechaCreacionClase = JO.getString("fecha_clase");
+                Clases clases = new Clases(nombreClaseClase,idClase);
                 clasesAdapter.add(clases);
                 count++;
             }
@@ -65,7 +79,13 @@ public class DisplayClasesListView extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Toast.makeText(getApplicationContext(),"Presionaste: " + position,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(current, DisplayListaListviewCheckbox.class);
+                Clases oClases = (Clases) clasesAdapter.getItem(position);
+                intent.putExtra("id_clase",oClases.getIdClase_json());
+                current.startActivity(intent);
+
 
             }
         });
@@ -88,5 +108,7 @@ public class DisplayClasesListView extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return MenuSuperior.instancia.onOptionsItemSelected(item, this);
     }
+
+
 
 }

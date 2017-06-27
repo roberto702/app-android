@@ -1,47 +1,54 @@
 package cl.estfel.siac;
 
 /**
- * Created by robma on 09/06/2017.
+ * Created by robma on 26/06/2017.
  */
-
 
 public class Asistencia {
 
-    private String nombreClaseAsistencia_json, nombreAlumnoAsistencia_json, fechaAlumnoAsistencia_json;
+    private String nombreAlumno_json;
+    private String apellidoAlumno_json;
+    private String idclaseAlumno_json;
+    private String rutAlumno_json;
 
-    public Asistencia(String nombreClaseAsistencia_json, String nombreAlumnoAsistencia_json, String fechaAlumnoAsistencia_json){
-        this.setNombreClaseAsistencia_json(nombreClaseAsistencia_json);
-        this.setNombreAlumno_json(nombreAlumnoAsistencia_json);
-        this.setFechaAsistencia_json(fechaAlumnoAsistencia_json);
+    public Asistencia(String nombreAlumno_json, String apellidoAlumno_json, String idclaseAlumno_json, String rutAlumno_json) {
+        this.nombreAlumno_json = nombreAlumno_json;
+        this.apellidoAlumno_json = apellidoAlumno_json;
+        this.idclaseAlumno_json = idclaseAlumno_json;
+        this.rutAlumno_json = rutAlumno_json;
     }
 
-
-    public String getNombreClaseAsistencia_json(){
-        return nombreClaseAsistencia_json;
-
-    }
-
-    public void setNombreClaseAsistencia_json(String nombreClaseAsistencia_json){
-        this.nombreClaseAsistencia_json = nombreClaseAsistencia_json;
-    }
-
+    public Asistencia(){}
 
     public String getNombreAlumno_json() {
-        return nombreAlumnoAsistencia_json;
+        return nombreAlumno_json;
     }
 
-    public void setNombreAlumno_json(String nombreAlumnoAsistencia_json) {
-        this.nombreAlumnoAsistencia_json = nombreAlumnoAsistencia_json;
+    public void setNombreAlumno_json(String nombreAlumno_json) {
+        this.nombreAlumno_json = nombreAlumno_json;
     }
 
-    public String getFechaAsistencia_json() {
-        return fechaAlumnoAsistencia_json;
+    public String getApellidoAlumno_json() {
+        return apellidoAlumno_json;
     }
 
-    public void setFechaAsistencia_json(String fechaAlumnoAsistencia_json) {
-        this.fechaAlumnoAsistencia_json = fechaAlumnoAsistencia_json;
+    public void setApellidoAlumno_json(String apellidoAlumno_json) {
+        this.apellidoAlumno_json = apellidoAlumno_json;
     }
 
+    public String getIdclaseAlumno_json() {
+        return idclaseAlumno_json;
+    }
 
+    public void setIdclaseAlumno_json(String idclaseAlumno_json) {
+        this.idclaseAlumno_json = idclaseAlumno_json;
+    }
+
+    public String getRutAlumno_json() {
+        return rutAlumno_json;
+    }
+
+    public void setRutAlumno_json(String rutAlumno_json) {
+        this.rutAlumno_json = rutAlumno_json;
+    }
 }
-

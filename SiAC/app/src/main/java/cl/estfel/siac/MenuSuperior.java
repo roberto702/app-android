@@ -53,6 +53,7 @@ public class MenuSuperior {
 
     public static void Menu1Success(){
         Intent intent = new Intent(current, DisplayClasesListView.class);
+        intent.putExtra("id_alumno","1");
         current.startActivity(intent);
         current.finish();
     }

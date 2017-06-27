@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ClasesAdapter extends ArrayAdapter{
 
-    List list = new ArrayList();
+    List<Clases> list = new ArrayList<>();
     public ClasesAdapter(Context context, int resource) {
 
         super(context, resource);
@@ -52,7 +52,7 @@ public class ClasesAdapter extends ArrayAdapter{
             row = layoutInflater.inflate(R.layout.row_clases, parent, false);
             clasesHolder = new ClasesAdapter.ClasesHolder();
             clasesHolder.nombre_de_la_clase = (TextView) row.findViewById(R.id.tx_nombre_de_la_clase);
-            clasesHolder.fecha_creacion_clase = (TextView) row.findViewById(R.id.tx_fecha_creacion_clase);
+            //clasesHolder.fecha_creacion_clase = (TextView) row.findViewById(R.id.tx_fecha_creacion_clase);
             row.setTag(clasesHolder);
 
         } else {
@@ -63,14 +63,14 @@ public class ClasesAdapter extends ArrayAdapter{
 
         Clases clases = (Clases) this.getItem(position);
         clasesHolder.nombre_de_la_clase.setText(clases.getNombredelaClase_json());
-        clasesHolder.fecha_creacion_clase.setText(clases.getFechacreacionClase_json());
+        //clasesHolder.fecha_creacion_clase.setText(clases.getFechacreacionClase_json());
 
         return row;
     }
 
     static class ClasesHolder{
 
-        TextView nombre_de_la_clase, fecha_creacion_clase;
+        TextView nombre_de_la_clase;
     }
 
 
