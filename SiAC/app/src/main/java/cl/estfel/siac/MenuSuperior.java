@@ -59,7 +59,7 @@ public class MenuSuperior {
     }
 
     public static void Menu2Success(){
-        Intent intent = new Intent(current,DisplayListView.class);
+        Intent intent = new Intent(current,DisplayUsuariosListView.class);
         current.startActivity(intent);
         current.finish();
     }

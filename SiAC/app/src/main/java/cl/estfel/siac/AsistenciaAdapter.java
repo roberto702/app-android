@@ -1,87 +1,134 @@
 package cl.estfel.siac;
 
-/**
- * Created by robma on 10/06/2017.
- */
-//import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-//import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-//import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class AsistenciaAdapter extends ArrayAdapter {
+/**
+ * Custom adapter - "View Holder Pattern".
+ *
+ *
+ *
+ */
 
-    List listAsistencia = new ArrayList();
+public class AsistenciaAdapter extends ArrayAdapter<Row> implements
+        View.OnClickListener {
+    DisplayAsistenciaListviewCheckbox Act = null;
+    //List<Asistencia> list = new ArrayList<>();
+    private LayoutInflater layoutInflater;
 
-    public AsistenciaAdapter(Context context, int resource) {
-
-        super(context, resource);
+    public AsistenciaAdapter(Context context, List<Row> objects) {
+        super(context,0, objects);
+        layoutInflater = LayoutInflater.from(context);
+        this.Act = (DisplayAsistenciaListviewCheckbox)context;
     }
 
-    public void add(Asistencia object){
-
-        super.add(object);
-        listAsistencia.add(object);
-
-    }
-
+    @NonNull
     @Override
-    public int getCount(){
-        return super.getCount();
-    }
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+        // holder pattern
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
 
-    @Override
-    public Object getItem(int position){
-
-        return listAsistencia.get(position);
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        View row;
-        row = convertView;
-        AsistenciaAdapter.AsistenciaHolder asistenciaHolder;
-
-        if (row == null) {
-
-            LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            row = layoutInflater.inflate(R.layout.row_asistencia, parent, false);
-            asistenciaHolder = new AsistenciaHolder();
-            asistenciaHolder.nomClaseAsistencia = (TextView) row.findViewById(R.id.tx_nomClaseAsistencia);
-            asistenciaHolder.nomAsistencia = (TextView) row.findViewById(R.id.tx_nomAsistencia);
-            asistenciaHolder.fechaAsistencia = (TextView) row.findViewById(R.id.tx_fechaAsistencia);
-            CheckBox cb = (CheckBox) convertView.findViewById(R.id.checkBox1);
-            row.setTag(asistenciaHolder);
-
+            convertView = layoutInflater.inflate(R.layout.listview_row, parent, false);
+            holder.setTextViewTitle((TextView) convertView
+                    .findViewById(R.id.textViewTitle));
+            holder.setTextViewSubtitle((TextView) convertView
+                    .findViewById(R.id.textViewSubtitle));
+            holder.setCheckBox((CheckBox) convertView
+                    .findViewById(R.id.checkBox));
+            convertView.setTag(holder);
         } else {
-            asistenciaHolder = (AsistenciaAdapter.AsistenciaHolder) row.getTag();
-
+            holder = (Holder) convertView.getTag();
         }
 
-        Asistencia asistencia = (Asistencia) this.getItem(position);
-        asistenciaHolder.nomClaseAsistencia.setText(asistencia.getNombreClaseAsistencia_json());
-        asistenciaHolder.nomAsistencia.setText(asistencia.getNombreAlumno_json());
-        asistenciaHolder.fechaAsistencia.setText(asistencia.getFechaAsistencia_json());
-        //if (asistencia[position].get
+        final Row row = getItem(position);
+        assert row != null;
+        holder.getTextViewTitle().setText(row.getTitle());
+        holder.getTextViewSubtitle().setText(row.getSubtitle());
+        holder.getCheckBox().setTag(position);
+        holder.getCheckBox().setChecked(row.isChecked());
+        holder.getCheckBox().setOnClickListener(this);
 
-        return row;
+        changeBackground(getContext(), holder.getCheckBox());
+
+        return convertView;
     }
 
-    static class AsistenciaHolder{
 
-        TextView nomClaseAsistencia, nomAsistencia, fechaAsistencia;
+    @Override
+    public void onClick(View v) {
+
+        CheckBox checkBox = (CheckBox) v;
+        int position = (Integer) v.getTag();
+        getItem(position).setChecked(checkBox.isChecked());
+        Act.asistencias.get(position).asiste = checkBox.isChecked();
+
+        changeBackground(AsistenciaAdapter.this.getContext(), checkBox);
+        String msg = this.getContext().getString(R.string.check_toast, position, checkBox.isChecked());
+        Toast.makeText(this.getContext(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+
+    /**
+     * Set the background of a row based on the value of its checkbox value.
+     * Checkbox has its own style.
+     */
+    @SuppressWarnings("deprecation")
+    private void changeBackground(Context context, CheckBox checkBox) {
+        View row = (View) checkBox.getParent();
+        Drawable drawable;
+        if (checkBox.isChecked()) {
+            drawable = context.getResources().getDrawable(
+                    R.drawable.listview_selector_checked);
+        } else {
+            drawable = context.getResources().getDrawable(
+                    R.drawable.listview_selector);
+        }
+        row.setBackgroundDrawable(drawable);
+    }
+
+    private static class Holder {
+        TextView textViewTitle;
+        TextView textViewSubtitle;
+        CheckBox checkBox;
+
+        public TextView getTextViewTitle() {
+            return textViewTitle;
+        }
+
+        public void setTextViewTitle(TextView textViewTitle) {
+            this.textViewTitle = textViewTitle;
+        }
+
+        public TextView getTextViewSubtitle() {
+            return textViewSubtitle;
+        }
+
+        public void setTextViewSubtitle(TextView textViewSubtitle) {
+            this.textViewSubtitle = textViewSubtitle;
+        }
+
+        public CheckBox getCheckBox() {
+            return checkBox;
+        }
+
+        public void setCheckBox(CheckBox checkBox) {
+            this.checkBox = checkBox;
+        }
+
     }
 
 }

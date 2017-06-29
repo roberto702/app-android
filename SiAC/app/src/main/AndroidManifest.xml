@@ -19,10 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".SuccessActivity" />
-        <activity android:name=".DisplayListView" />
+        <activity android:name=".DisplayUsuariosListView" />
         <activity android:name=".InsertActivity" />
         <activity android:name=".DisplayClasesListView"/>
-        <activity android:name=".DisplayListaListviewCheckbox"/>
+        <activity android:name=".DisplayAsistenciaListviewCheckbox"/>
     </application>
 
 </manifest>

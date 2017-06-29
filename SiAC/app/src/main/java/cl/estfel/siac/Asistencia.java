@@ -1,15 +1,18 @@
 package cl.estfel.siac;
 
+import java.util.ArrayList;
+
 /**
  * Created by robma on 26/06/2017.
  */
 
-public class Asistencia {
+public class Asistencia extends ArrayList<Asistencia> {
 
     private String nombreAlumno_json;
     private String apellidoAlumno_json;
     private String idclaseAlumno_json;
     private String rutAlumno_json;
+    public boolean asiste = false;
 
     public Asistencia(String nombreAlumno_json, String apellidoAlumno_json, String idclaseAlumno_json, String rutAlumno_json) {
         this.nombreAlumno_json = nombreAlumno_json;

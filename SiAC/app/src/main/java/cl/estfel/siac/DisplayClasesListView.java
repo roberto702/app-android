@@ -2,10 +2,8 @@ package cl.estfel.siac;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,13 +14,6 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import static cl.estfel.siac.MenuSuperior.current;
 import static cl.estfel.siac.R.id.listView1;
@@ -81,7 +72,7 @@ public class DisplayClasesListView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Toast.makeText(getApplicationContext(),"Presionaste: " + position,Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(current, DisplayListaListviewCheckbox.class);
+                Intent intent = new Intent(current, DisplayAsistenciaListviewCheckbox.class);
                 Clases oClases = (Clases) clasesAdapter.getItem(position);
                 intent.putExtra("id_clase",oClases.getIdClase_json());
                 current.startActivity(intent);
